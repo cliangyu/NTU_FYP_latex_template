@@ -1,0 +1,233 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[no-math]{fontspec}
+
+% \setmainfont{Times New Roman}
+
+\setlength\parindent{0pt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{longtable}
+
+%% math and physics packages:
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+\usepackage{amsfonts}
+\usepackage{nicefrac}
+\usepackage{amsthm}
+\usepackage{mathtools}
+% \usepackage[]{mathspec} % Includes fontspec as well
+% \usepackage{unicode-math}
+% \setmathfont[version=normal]{Arial}
+
+
+\usepackage[left = 3.5cm, right = 3.0cm, top = 3.0cm, bottom = 3.0cm]{geometry}
+\usepackage[nottoc,numbib]{tocbibind}
+\newcommand{\me}{\mathrm{e}}
+\usepackage{tabularx, booktabs}
+\usepackage{pdflscape}
+
+\usepackage{lipsum}
+\newcommand{\mypm}{\mathbin{\smash{%
+\raisebox{0.35ex}{%
+            $\underset{\raisebox{0.5ex}{$\smash -$}}{\smash+}$%
+            }%
+        }%
+    }%
+}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lipsum} % load paragraphs of filler text
+\usepackage{pdfpages}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{graphicx} % Required for including pictures
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem}
+\usepackage{setspace}
+
+\graphicspath{{/figures/}}
+\usepackage{subcaption}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%
+\usepackage[acronym, toc, nonumberlist]{glossaries}
+\input{acronyms}
+\makeglossaries
+
+\usepackage{xspace}
+
+% Add a period to the end of an abbreviation unless there's one
+% already, then \xspace.
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+
+\def\eg{\emph{e.g}\onedot} \def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot} \def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{c.f}\onedot} \def\Cf{\emph{C.f}\onedot}
+\def\etc{\emph{etc}\onedot} \def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\etal{\emph{et al}\onedot}
+\makeatother
+
+\newcommand{\myparagraph}[1]{\smallskip\noindent\textbf{#1}}
+
+\newenvironment{legend}
+    {\begin{center}
+    \begin{tabular}{|p{0.7\textwidth}|}
+    \hline
+    }
+    { 
+    \hline
+    \end{tabular} 
+    \end{center}
+    }
+  
+% code listing settings
+\usepackage{listings}
+\lstset{
+    language=python,
+    basicstyle=\ttfamily\tiny,
+    aboveskip={1.0\baselineskip},
+    belowskip={1.0\baselineskip},
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=4,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=lines,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    numbers=left,
+    numberstyle=\small,
+    stepnumber=1,
+    numbersep=10pt,
+    captionpos=t,
+    escapeinside={\%}{)}
+}
+\usepackage[natbib=true,backend=bibtex,style=ieee,bibencoding=ascii,sorting=none,maxnames=99]{biblatex}
+ % - Package for the bibliography ("referenser").
+\addbibresource{references.bib} 
+\linespread{1.5}
+
+\usepackage{gensymb}
+
+\DeclareMathOperator{\taninv}{arctan}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Project Number: A3282-211}
+\rfoot{Page \thepage}
+
+\newcolumntype{x}[1]{>{\centering\arraybackslash}p{#1pt}}
+\newcolumntype{a}[1]{>{\columncolor{verylightgray}\centering\arraybackslash}p{#1pt}}
+\newcolumntype{y}[1]{>{\raggedright\arraybackslash}p{#1pt}}
+\newcolumntype{z}[1]{>{\raggedleft\arraybackslash}p{#1pt}}\newlength\savewidth\newcommand\shline{\noalign{\global\savewidth\arrayrulewidth\global\arrayrulewidth 1pt}\hline\noalign{\global\arrayrulewidth\savewidth}}
+\newcommand{\tablestyle}[2]{\setlength{\tabcolsep}{#1}\renewcommand{\arraystretch}{#2}\centering\footnotesize}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\tpm}[1]{\resizebox{4mm}{!}{\Large\raisebox{1mm}{$\genfrac{}{}{0pt}{}{}{\pm#1}$}}}
+\newcommand{\bd}[1]{\textbf{#1}}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\rulesep}{\unskip\ \vrule\ }
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -               Title and affiliation                    - %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \includegraphics[width=0.9\linewidth]{figures/others/ntu-logo.png}
+    \\[1.7cm]
+    {\fontfamily{pbk}\fontseries{b}\selectfont
+    \begin{spacing}{1.2}
+    {\LARGE  Title
+    \\[2.5cm] % Title of your document
+    }
+    \end{spacing}
+    \noindent
+    \noindent
+    \Large Submitted by: Name\\
+    \Large Matriculation Number: No #
+
+    \vspace{\baselineskip}
+    \Large Supervisor: Asst Prof XXX\\[1.5cm]
+
+    }
+    {\fontfamily{pbk}\selectfont
+    {\Large School of Electrical \& Electronic Engineering \\[1.5cm]}
+    \begin{spacing}{1}
+    \small A final year project report presented to the Nanyang Technological University \\
+    in partial fulfilment of the requirements of the degree of \\
+    Bachelor of Engineering \\[0.5cm]
+    \end{spacing}
+    }
+    {\fontfamily{pbk}\fontseries{b}\selectfont
+    2022}
+  \end{center}
+\end{titlepage}
+
+\setmainfont{Times New Roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -                  PREAMBLE ENDS HERE                   - %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{sections/0_abs}
+\input{sections/1_intro}
+\input{sections/2_literature}
+\input{sections/3_method}
+\input{sections/4_exp}
+\input{sections/5_conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -                    References                          - %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\addcontentsline{toc}{section}{References}
+\printbibliography
+\label{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -                    Appendix                            - %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{sections/6_appendix}
+
+\end{document}
